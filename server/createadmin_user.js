@@ -15,7 +15,7 @@ module.exports = function(adminEmail, adminPassword) {
 		// if there are any errors, return the error
 		if (err) {
 			logger.error("creatadmin_user.js: Error running find query:", err);
-			return done(err);
+			return err;
 		}
 
 		// check to see if there's already a user with that email

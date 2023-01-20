@@ -1,4 +1,6 @@
+require('dotenv').config()
 // User defined settings -------------------------------------------
+//move this to .env
 
 const port = process.env.PORT || 3000;
 //https://docs.mongodb.com/manual/reference/connection-string/
@@ -9,8 +11,8 @@ if (process.env.mongoHost){
     mongoURL = 'mongodb://'+process.env.mongoHost+':27017/kort';
 }
 //the admin user is created upon launching the application for the first time
-const adminUser = "admin";  //optionally change this
-const adminPassword = "admin"; //set this to something different and secure
+const adminUser = process.env.adminUser;  //optionally change this
+const adminPassword = process.env.adminPassword; //set this to something different and secure
 
 const allowGoogleAuth = false; //allowUserRegistration must be set to true as well to enable this
 const allowUserRegistration = false;
@@ -66,7 +68,9 @@ mongoose.Promise = global.Promise;
 
 //https://mongoosejs.com/docs/deprecations.html#-findandmodify
 //https://stackoverflow.com/questions/57895175/server-discovery-and-monitoring-engine-is-deprecated/57899638#57899638
-const clientP = mongoose.connect(mongoURL, {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true}).then(m => m.connection.getClient())
+// useFindAndModify: false, is not supported
+// [MONGOOSE] DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7. Use `mongoose.set('strictQuery', false);` if you want to prepare for this change. Or use `mongoose.set('strictQuery', true);` to suppress this warning.
+const clientP = mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true}).then(m => m.connection.getClient())
 
 //load in models
 require('./models/user');
