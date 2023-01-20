@@ -22,12 +22,16 @@
   "homepage": "https://github.com/carlsonp/kort",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-rate-limit": "^6.0.0",
+    "express-rate-limit": "^6.7.0",
     "express-session": "^1.17.2",
     "font-awesome": "^4.7.0",
+    "helmet": "^6.0.1",
     "jquery": "^3.6.0",
     "jstree": "^3.3.12",
     "mongo-sanitize": "^1.1.0",
@@ -43,7 +47,10 @@
     "npm-check-updates": "^16.6.2",
     "phantomjs-prebuilt": "^2.1.16"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js -e js,ejs"
+  },
   "author": "Patrick Carlson and Leif Berg",
   "license": "GPL-3.0"
 }
