@@ -1,6 +1,5 @@
 require('dotenv').config()
-// User defined settings -------------------------------------------
-//move this to .env
+// User defined settings are set in the .env
 
 const port = process.env.PORT || 3000;
 //https://docs.mongodb.com/manual/reference/connection-string/
@@ -14,13 +13,13 @@ if (process.env.mongoHost){
 const adminUser = process.env.adminUser;  //optionally change this
 const adminPassword = process.env.adminPassword; //set this to something different and secure
 
-const allowGoogleAuth = false; //allowUserRegistration must be set to true as well to enable this
-const allowUserRegistration = false;
+const allowGoogleAuth = process.env.allowGoogleAuth; //allowUserRegistration must be set to true as well to enable this
+const allowUserRegistration = process.env.allowUserRegistration;
 
 //Google Authentication (via OAuth2) (Optional)
-const googleClientID = '';
-const googleClientSecret = ''; //DO NOT SHARE THIS!
-const googleCallbackURL = 'http://127.0.0.1:'+port+'/auth/google/callback'; //only change the port and anything before it
+const googleClientID = process.env.googleClientID;
+const googleClientSecret = process.env.googleClientSecret; //DO NOT SHARE THIS!
+const googleCallbackURL = process.env.URL + ':' +port+'/auth/google/callback'; //only change the port and anything before it
 
 
 //------------------------------------------------------------------
@@ -40,7 +39,11 @@ var app = express();
 //https://expressjs.com/en/advanced/best-practice-security.html
 //https://helmetjs.github.io/docs/
 const helmet = require('helmet');
-app.use(helmet());
+//setting content security policy 
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+    contentSecurityPolicy: { reportOnly: true },
+  }));
 const flash = require('connect-flash');
 var logger = require('./server/logger.js');
 const path = require('path');
@@ -99,17 +102,15 @@ app.use('/opensans', express.static(path.join(__dirname, '/node_modules/npm-font
 app.use('/js', express.static(path.join(__dirname, '/js/')));
 app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.use('/clipboard', express.static(path.join(__dirname, '/node_modules/clipboard/dist/')));
-//a lot of dead dependancies
-//app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
+app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
+//get popper from CDN
 //app.use('/popperjs', express.static(path.join(__dirname, '/node_modules/popper.js/dist/umd/')));
-//app.use('/bootbox', express.static(path.join(__dirname, '/node_modules/bootbox/')));
+app.use('/bootbox', express.static(path.join(__dirname, '/node_modules/bootbox/')));
 
 app.use('/jstree', express.static(path.join(__dirname, '/node_modules/jstree/dist/')));
 app.use('/font-awesome', express.static(path.join(__dirname, '/node_modules/font-awesome/')));
 app.use('/dragula', express.static(path.join(__dirname, '/node_modules/dragula/dist/')));
-
-// dead 
-// #app.use('/plotlyjs', express.static(path.join(__dirname, '/node_modules/plotly.js/dist/')));
+app.use('/plotlyjs', express.static(path.join(__dirname, '/node_modules/plotly.js/dist/')));
 
 app.use('/datatables', express.static(path.join(__dirname, '/node_modules/datatables.net/js/')));
 app.use('/datatables', express.static(path.join(__dirname, '/node_modules/datatables.net-dt/')));

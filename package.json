@@ -19,25 +19,37 @@
   "bugs": {
     "url": "https://github.com/carlsonp/kort/issues"
   },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js -e js,ejs"
+  },
   "homepage": "https://github.com/carlsonp/kort",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bootbox": "^6.0.0",
+    "bootstrap": "^5.3.0-alpha1",
     "clipboard": "^2.0.11",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
+    "datatables-buttons": "^1.0.3",
+    "datatables.net": "^1.13.1",
+    "datatables.net-buttons-dt": "^2.3.3",
+    "datatables.net-datetime": "^1.2.0",
     "dotenv": "^16.0.3",
+    "dragula": "^3.7.3",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-rate-limit": "^6.7.0",
-    "express-session": "^1.17.2",
+    "express-session": "^1.17.3",
     "font-awesome": "^4.7.0",
     "helmet": "^6.0.1",
     "jquery": "^3.6.3",
-    "jstree": "^3.3.12",
+    "jstree": "^3.3.14",
     "mongo-sanitize": "^1.1.0",
     "mongoose": "^6.0.6",
+    "morgan": "^1.10.0",
     "npm-font-open-sans": "^1.1.0",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0",
@@ -50,10 +62,6 @@
     "nodemon": "^2.0.12",
     "npm-check-updates": "^16.6.2",
     "phantomjs-prebuilt": "^2.1.16"
-  },
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js -e js,ejs"
   },
   "author": "Patrick Carlson and Leif Berg",
   "license": "GPL-3.0"

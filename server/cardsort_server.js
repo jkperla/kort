@@ -61,6 +61,7 @@ module.exports = {
     },
     results: function (req, res, next) {
         Study.findOne({_id: req.params.id, ownerID: req.user._id}, function (err, study) {
+            logger.debug(study)
             if (err) {
                 res.status(504);
                 logger.error("cardsort_server.js: Error getting study to see results:", err);
