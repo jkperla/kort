@@ -85,8 +85,8 @@ app.set('view engine', 'ejs');
 app.use(compression());
 
 // helpful for debugging
-//const morgan = require('morgan');
-//app.use(morgan('dev')); // log every request to the console
+const morgan = require('morgan');
+app.use(morgan('dev')); // log every request to the console
 
 app.use(cookieParser()); // read cookies (needed for auth)
 
@@ -99,13 +99,18 @@ app.use('/opensans', express.static(path.join(__dirname, '/node_modules/npm-font
 app.use('/js', express.static(path.join(__dirname, '/js/')));
 app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.use('/clipboard', express.static(path.join(__dirname, '/node_modules/clipboard/dist/')));
-app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
-app.use('/popperjs', express.static(path.join(__dirname, '/node_modules/popper.js/dist/umd/')));
+//a lot of dead dependancies
+//app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
+//app.use('/popperjs', express.static(path.join(__dirname, '/node_modules/popper.js/dist/umd/')));
+//app.use('/bootbox', express.static(path.join(__dirname, '/node_modules/bootbox/')));
+
 app.use('/jstree', express.static(path.join(__dirname, '/node_modules/jstree/dist/')));
-app.use('/bootbox', express.static(path.join(__dirname, '/node_modules/bootbox/')));
 app.use('/font-awesome', express.static(path.join(__dirname, '/node_modules/font-awesome/')));
 app.use('/dragula', express.static(path.join(__dirname, '/node_modules/dragula/dist/')));
-app.use('/plotlyjs', express.static(path.join(__dirname, '/node_modules/plotly.js/dist/')));
+
+// dead 
+// #app.use('/plotlyjs', express.static(path.join(__dirname, '/node_modules/plotly.js/dist/')));
+
 app.use('/datatables', express.static(path.join(__dirname, '/node_modules/datatables.net/js/')));
 app.use('/datatables', express.static(path.join(__dirname, '/node_modules/datatables.net-dt/')));
 app.use('/datatables-buttons', express.static(path.join(__dirname, '/node_modules/datatables.net-buttons/js/')));
