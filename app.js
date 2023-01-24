@@ -51,6 +51,18 @@ app.use(helmet({
       }, 
     },
   }));
+//HTTPS
+const https = require('node:https');
+const fs = require('node:fs');
+
+var privateKey = fs.readFileSync( './ssl/privatekey.pem' );
+var certificate = fs.readFileSync( './ssl/certificate.pem' );
+
+https.createServer({
+    key: privateKey,
+    cert: certificate
+}, app).listen(port);
+
 const flash = require('connect-flash');
 var logger = require('./server/logger.js');
 const path = require('path');
