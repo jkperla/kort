@@ -37,7 +37,7 @@ $(document).ready(function() {
 		]
 	});
 
-	$( studies_table.row( [studies_table.rows().count()-1] ).nodes() ).addClass( 'highlight-first-row' );
+	// $( studies_table.row( [studies_table.rows().count()-1] ).nodes() ).addClass( 'highlight-first-row' );
 
 	$('#studies_table_body').on( "click",'.text-danger', function(event) {
 		event.preventDefault();

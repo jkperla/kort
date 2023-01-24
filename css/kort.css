@@ -126,3 +126,8 @@ h3.header {
 table.dataTable tbody td {
     vertical-align: middle;
 }
+
+.highlight-first-row tr:first-child {
+    background-color: #dff0d8 !important;
+    color: #3e8f3e;
+}
