@@ -95,8 +95,8 @@ app.set('view engine', 'ejs');
 app.use(compression());
 
 // helpful for debugging
-const morgan = require('morgan');
-app.use(morgan('dev')); // log every request to the console
+// const morgan = require('morgan');
+// app.use(morgan('dev')); // log every request to the console
 
 app.use(cookieParser()); // read cookies (needed for auth)
 
