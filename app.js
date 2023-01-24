@@ -110,8 +110,7 @@ app.use('/js', express.static(path.join(__dirname, '/js/')));
 app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.use('/clipboard', express.static(path.join(__dirname, '/node_modules/clipboard/dist/')));
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
-//get popper from CDN
-//app.use('/popperjs', express.static(path.join(__dirname, '/node_modules/popper.js/dist/umd/')));
+app.use('/popperjs', express.static(path.join(__dirname, '/node_modules/popper.js/dist/umd/')));
 app.use('/bootbox', express.static(path.join(__dirname, '/node_modules/bootbox/')));
 
 app.use('/jstree', express.static(path.join(__dirname, '/node_modules/jstree/dist/')));
