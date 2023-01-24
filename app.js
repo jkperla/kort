@@ -46,7 +46,8 @@ app.use(helmet({
       directives: {
         "script-src": ["'self'", "cdn.jsdelivr.net"],
         "style-src-elem": ["'self'", "cdn.jsdelivr.net", "*.googleapis.com"],
-        "style-src": null
+        "style-src": null,
+        "script-src-attr": "unsafe-inline"
       }, 
     },
   }));
