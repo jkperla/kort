@@ -3,6 +3,7 @@ cs.groupNum = 0;
 cs.zoneNum = 5;
 var drake = null;
 
+
 function updateGroupArray(){
 	cs.groups = [];
 	$('.group').each(function(index) {
@@ -228,3 +229,12 @@ function setup(input_studyType,input_status,input_responseID,input_cards,input_g
 	$('#done').hide();
 }
 
+$(document).ready(function() {
+	const dataset = document.querySelector('#studydata').dataset
+	var studyType = dataset.studyType
+	var status = dataset.sstatus
+	var responseID = dataset.sresponseID
+	var cards = dataset.scards
+	var groups = dataset.sgroups
+	setup(studyType,status,responseID,cards,groups);
+});
