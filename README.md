@@ -37,4 +37,5 @@ To-do:
 -- Set CSP property in helmetjs (add unpkg.com for popper)
 -- fix CORS for popper https://stackoverflow.com/questions/69832906/how-to-prevent-err-blocked-by-response-notsameoriginafterdefaultedtosameoriginby
 
+- Apostrophe in card title breaks it
 

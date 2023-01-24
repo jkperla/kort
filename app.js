@@ -41,8 +41,14 @@ var app = express();
 const helmet = require('helmet');
 //setting content security policy 
 app.use(helmet({
-  crossOriginResourcePolicy: false,
-    contentSecurityPolicy: { reportOnly: true },
+    crossOriginResourcePolicy: "cross-origin" ,
+    contentSecurityPolicy: { 
+      directives: {
+        "script-src": ["'self'", "cdn.jsdelivr.net"],
+        "style-src-elem": ["'self'", "cdn.jsdelivr.net", "*.googleapis.com"],
+        "style-src": null
+      }, 
+    },
   }));
 const flash = require('connect-flash');
 var logger = require('./server/logger.js');
