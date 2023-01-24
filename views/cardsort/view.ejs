@@ -13,18 +13,15 @@
 		<link rel="stylesheet" type="text/css" href="/css/cardsort.css" />
 
 		<title>Card Sort</title>
-	</head>
 
-	<script>
-		$(document).ready(function() {
-			var studyType = "<%= singleStudy.data.studyType %>";
-			var status = "<%= singleStudy.status %>";
-			var responseID = "<%= response %>";
-			var cards = "<% for(var i=0; i<singleStudy.data.cards.length; i++) {%><%= singleStudy.data.cards[i] %>;<% } %>";
-			var groups = "<% for(var i=0; i<singleStudy.data.groups.length; i++) {%><%= singleStudy.data.groups[i] %>;<% } %>";
-			setup(studyType,status,responseID,cards,groups);
-		});
-	</script>
+		<article id="studydata" data-studyType = "<%= singleStudy.data.studyType %>"
+	data-sstatus = "<%= singleStudy.status %>"
+	data-sresponseID = "<%= response %>"
+	data-scards = "<% for(var i=0; i<singleStudy.data.cards.length; i++) {%><%= singleStudy.data.cards[i] %>;<% } %>"
+	data-sgroups = "<% for(var i=0; i<singleStudy.data.groups.length; i++) {%><%= singleStudy.data.groups[i] %>;<% } %>"
+	
+	></article>
+	</head>
 
 	<body>
 		<form id='resultsForm' method="POST" action="/submitResult">
