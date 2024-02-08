@@ -51,6 +51,27 @@ app.use(helmet({
       }, 
     },
   }));
+
+
+if (process.env.NODE_ENV == "DEV") {
+  const http = require('node:http')
+
+  http.createServer(app).listen(port, () => {
+    logger.info(`server is up on ${port}`)
+  })
+} else {
+//HTTPS
+const https = require('node:https');
+const fs = require('node:fs');
+
+var privateKey = fs.readFileSync( './ssl/privatekey.pem' );
+var certificate = fs.readFileSync( './ssl/certificate.pem' );
+
+https.createServer({
+    key: privateKey,
+    cert: certificate
+}, app).listen(port);
+}
 const flash = require('connect-flash');
 var logger = require('./server/logger.js');
 const path = require('path');
@@ -95,8 +116,8 @@ app.set('view engine', 'ejs');
 app.use(compression());
 
 // helpful for debugging
-const morgan = require('morgan');
-app.use(morgan('dev')); // log every request to the console
+// const morgan = require('morgan');
+// app.use(morgan('dev')); // log every request to the console
 
 app.use(cookieParser()); // read cookies (needed for auth)
 
@@ -110,8 +131,7 @@ app.use('/js', express.static(path.join(__dirname, '/js/')));
 app.use('/jquery', express.static(path.join(__dirname, '/node_modules/jquery/dist/')));
 app.use('/clipboard', express.static(path.join(__dirname, '/node_modules/clipboard/dist/')));
 app.use('/bootstrap', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/')));
-//get popper from CDN
-//app.use('/popperjs', express.static(path.join(__dirname, '/node_modules/popper.js/dist/umd/')));
+app.use('/popperjs', express.static(path.join(__dirname, '/node_modules/popper.js/dist/umd/')));
 app.use('/bootbox', express.static(path.join(__dirname, '/node_modules/bootbox/')));
 
 app.use('/jstree', express.static(path.join(__dirname, '/node_modules/jstree/dist/')));

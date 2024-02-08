@@ -5,14 +5,7 @@
 		<%- include('partials/datatables.ejs') %>
 		<title>Kort: Studies</title>
 	 	<script type="text/javascript" src="/js/studies.js"></script>
-	 	<% if (locals.new) { %>
-	 	<style type="text/css">
-	 		.highlight-first-row {
-			    background-color: #dff0d8 !important;
-			    color: #3e8f3e;
-			}
-	 	</style>
-	 	<% } %>
+
 	 	<meta name="Description" content="Kort manage studies">
 	</head>
 	<body class="background-white">
@@ -54,9 +47,9 @@
 						<th></th>
 					</tr>
 				</thead>
-				<tbody id="studies_table_body">
+				<tbody id="studies_table_body" <% if (locals.new) { %>class="highlight-first-row"<% } %> >
+				<tr>
 				<% for(var i=0; i<studies.length; i++) {%>
-					<tr>
 						<td><%=studies[i].title %></td>
 						<td><%=studies[i].getDateStr() %></td>
 						<td data-status="<%=studies[i].status %>"><%=studies[i].status %></td>

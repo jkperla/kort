@@ -136,15 +136,15 @@ module.exports = {
                         req.end();
                     } else {
                         for (var i = 0; i < responses.length; i++) {
-                            responses[i].remove();
+                            responses[i].deleteOne();
                         }
                     }
                 });
             }
-        }).remove(function (err) {
+        }).deleteOne(function (err) {
             if (err) {
                 logger.error("study_server.js: Error, cannot remove study:", err);
-                res.end(err);
+                res.send(err);
             } else {
                 res.send(true);
                 res.end();
@@ -218,7 +218,7 @@ module.exports = {
                         req.end();
                     } else {
                         for (var i = 0; i < responses.length; i++) {
-                            responses[i].remove();
+                            responses[i].deleteOne();
                         }
                     }
                 });
@@ -244,7 +244,7 @@ module.exports = {
                         req.end();
                     } else {
                         for (var i = 0; i < responses.length; i++) {
-                            responses[i].remove();
+                            responses[i].deleteOne();
                         }
                     }
                 });
