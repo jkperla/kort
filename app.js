@@ -51,6 +51,15 @@ app.use(helmet({
       }, 
     },
   }));
+
+
+if (process.env.NODE_ENV == "DEV") {
+  const http = require('node:http')
+
+  http.createServer(app).listen(port, () => {
+    logger.info(`server is up on ${port}`)
+  })
+} else {
 //HTTPS
 const https = require('node:https');
 const fs = require('node:fs');
@@ -62,7 +71,7 @@ https.createServer({
     key: privateKey,
     cert: certificate
 }, app).listen(port);
-
+}
 const flash = require('connect-flash');
 var logger = require('./server/logger.js');
 const path = require('path');
